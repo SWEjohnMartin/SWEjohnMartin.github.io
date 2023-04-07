@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Simple HTML5 Video Player</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </head>
   <body>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -12,12 +18,12 @@
     <br />
     <div>
       <video width="640" height="480" id="video" controls>
-        <source src="https://recruit.zoho.com/recruit/org680813681/ViewAttachment?fileId=alrj182c2a87e6897483383f9db4922bb788a&module=CustomModule8&parentId=509059000463482889&creatorId=509059000020269365&id=509059000463476949&name=WhatsApp_Video_2023-03-17_at_12.25.24_PM.mp4&downLoadMode=default" type="video/mp4">
+        <source src="" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
     <script type="text/javascript">
-      $( document ).ready(function() {///recruit/org680813681/ViewAttachment?fileId=alrj182c2a87e6897483383f9db4922bb788a&amp;module=CustomModule8&amp;parentId=509059000463482889&amp;creatorId=509059000020269365&amp;id=509059000463476949&amp;name=WhatsApp_Video_2023-03-17_at_12.25.24_PM.mp4
+      $( document ).ready(function() {
         $('#videoUrl').on('change', function(e) {
           var video = $('#video');
           video.children('source').attr('src', $(this).val());
