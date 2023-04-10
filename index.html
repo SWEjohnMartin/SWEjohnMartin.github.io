@@ -29,10 +29,17 @@
       </div>
       <div class="row" style="padding: 0 0 20px 15%;">
         
-        <div class="col-sm">
+        <div class="col-sm-4">
           
-          Paste URL here: <input type="text" id="videoUrl" name="videoUrl">
-        </div>    
+          <input type="text" class="form-control" id="videoUrl" name="videoUrl">
+          
+          
+        </div>   
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-primary">Load Video File</button>
+          <button onclick="document.getElementById('videoUrl').value = ''" type="button" class="btn btn-outline-secondary">Clear Text Box</button>
+          
+        </div> 
       </div>
       <div class="row">
         <div class="col-sm" style="padding: 0 0 40px 15%;">
