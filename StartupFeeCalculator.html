@@ -9,10 +9,20 @@
   </head>
 
   <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div
+          class="col-sm-12"
+          style="padding: 20px 0 20px 0; background-color: rgb(61, 61, 210)"
+        ></div>
+      </div>
+    </div>
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
-          <p style="font-size: 22px">Startup Fee Calculator</p>
+          <p style="font-size: 22px; padding: 20px 0 0 0">
+            Startup Fee Calculator
+          </p>
         </div>
         <hr />
         <div class="col-4 col-sm-4 col-md-4 col-lg-4">
@@ -155,11 +165,10 @@
           style="padding: 40px 0 0 40px"
         >
           <div class="form-group">
-            <label for="exampleFormControlSelect1"
-              >Discount Reason (Not in the logic yet...)</label
-            >
+            <label for="exampleFormControlSelect1">Discount Reason</label>
             <select class="form-control" id="DR">
               <option value="">Select a discount reason</option>
+              <option value="">Not Apply</option>
               <option value="Podcasts">Podcasts</option>
               <option value="Affiliate program">Affiliate program</option>
               <option value="Two or more agreements on the same day">
