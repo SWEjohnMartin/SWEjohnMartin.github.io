@@ -61,7 +61,7 @@ function calculate() {
       }
     }
     details = `Opportunity Type: ${OT}
-      Number of staffer: ${numberOfStaffers}
+      Number of staffers: ${numberOfStaffers}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
   } else if (numberOfStaffers === 0 && OT === "") {
