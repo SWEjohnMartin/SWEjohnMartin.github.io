@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Account Functions</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="./css/bootstrap5.3.1.min.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <p style="font-size: 22px">Startup Fee Calculator</p>
+        </div>
+        <hr />
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1"
+              >First Staffer Startup Fee Amount</label
+            >
+            <select class="form-control" id="startupfee">
+              <option value="">Select Startup Fee</option>
+              <option value="975">975</option>
+              <option value="750">750</option>
+            </select>
+          </div>
+
+          <hr />
+
+          <p style="font-size: 18px">Number of Staffers per type</p>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Executive Assistant</label>
+            <select class="form-control" id="EA">
+              <option value="0">Select number of staffers</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
+          <hr />
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Receptionist</label>
+            <select class="form-control" id="R">
+              <option value="0">Select number of staffers</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
+          <hr />
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Marketing Assistant</label>
+            <select class="form-control" id="MA">
+              <option value="0">Select number of staffers</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
+          <hr />
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Intake Specialist</label>
+            <select class="form-control" id="IS">
+              <option value="0">Select number of staffers</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
+          <hr />
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Legal Assistant</label>
+            <select class="form-control" id="LA">
+              <option value="0">Select number of staffers</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
+          <hr />
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Billing Assistant</label>
+            <select class="form-control" id="BA">
+              <option value="0">Select number of staffers</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
+          <hr />
+          <div class="form-group">
+            <label for="exampleFormControlSelect1"
+              >Client Happiness Coordinator</label
+            >
+            <select class="form-control" id="CHC">
+              <option value="0">Select number of staffers</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
+        </div>
+        <div
+          class="col-4 col-sm-4 col-md-4 col-lg-4"
+          style="padding: 40px 0 0 100px"
+        >
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Discount Reason</label>
+            <select class="form-control" id="DR">
+              <option value="">Select a discount reason</option>
+              <option value="Affiliate program">Affiliate program</option>
+              <option value="Fast-Track">Fast-Track</option>
+              <option value="Two or more agreements on the same day">
+                Two or more agreements on the same day
+              </option>
+            </select>
+          </div>
+          <hr />
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Opportunity Type</label>
+            <select class="form-control" id="OT">
+              <option value="">Select an Opportunity Type</option>
+              <option value="New Deal">New Deal</option>
+              <option value="Fast-Track">Fast-Track</option>
+              <option value="Change Position">Change Position</option>
+            </select>
+          </div>
+          <hr />
+          <label for="numberOfStaffers" class="sr-only"
+            >Number of staffers</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Number of staffers"
+            id="numberOfStaffers"
+          />
+          <label for="startfeeamount" class="sr-only">Start Fee Amount</label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Startup Fee Amount"
+            id="startfeeamount"
+          />
+
+          <button
+            style="margin: 20px 0 0 0"
+            class="btn btn-primary mb-2"
+            onclick="calculate()"
+          >
+            Calculate Startup Fee
+          </button>
+          <hr />
+          <p>Details:</p>
+          <p id="details"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/bootstrap5.3.1.bundle.min.js"></script>
+    <script src="./startfee.js"></script>
+  </body>
+</html>
