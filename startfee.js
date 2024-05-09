@@ -23,14 +23,14 @@ function calculate() {
     document.getElementById("startupfee").value = startupfeeAfterTheDiscount;
     details = `Opportunity Type: ${OT}
       Number of staffers: 1
-      Discount Reason: ${DR}
+      Program type: ${DR}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
   } else if (numberOfStaffers === 1 && OT === "New Deal" && DR.length > 0) {
     startupfeeAfterTheDiscount = 750;
     document.getElementById("startupfee").value = startupfeeAfterTheDiscount;
     details = `Opportunity Type: ${OT}
       Number of staffers: 1
-      Discount Reason: ${DR}
+      Program type: ${DR}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
   } else if (numberOfStaffers > 1 && OT === "New Deal" && DR.length === 0) {
     moreThanOneStaffer = numberOfStaffers - 1;
@@ -47,7 +47,7 @@ function calculate() {
     }
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
-      Discount Reason: ${DR}
+      Program type: ${DR}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
   } else if (numberOfStaffers > 1 && OT === "New Deal" && DR.length > 0) {
@@ -65,7 +65,7 @@ function calculate() {
     }
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
-      Discount Reason: ${DR}
+      Program type: ${DR}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
   } else if (numberOfStaffers === 1 && OT === "Fast-Track") {
@@ -73,7 +73,7 @@ function calculate() {
     document.getElementById("startupfee").value = 750;
     details = `Opportunity Type: ${OT}
       Number of staffers: 1
-      Discount Reason: ${DR}
+      Program type: ${DR}
       Startup Fee Total: $750.00`;
   } else if (numberOfStaffers > 1 && OT === "Fast-Track") {
     moreThanOneStaffer = numberOfStaffers - 1;
@@ -90,34 +90,34 @@ function calculate() {
     }
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
-      Discount Reason: ${DR}
+      Program type: ${DR}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
   } else if (numberOfStaffers === 0 && OT === "") {
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
-      Discount Reason: ${DR}
+      Program type: ${DR}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
     alert("Select at least one staffer and one Opportunity Type!");
   } else if (numberOfStaffers > 0 && OT === "") {
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
-      Discount Reason: ${DR}
+      Program type: ${DR}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
     alert("Select an Opportunity Type option!");
   } else if (numberOfStaffers === 0 && OT === "New Deal") {
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
-      Discount Reason: ${DR}
+      Program type: ${DR}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
     alert("Select at least one staffer!");
   } else if (numberOfStaffers === 0 && OT === "Fast-Track") {
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
-      Discount Reason: ${DR}
+      Program type: ${DR}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
     alert("Select at least one staffer!");
