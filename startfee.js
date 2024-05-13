@@ -11,50 +11,27 @@ function calculate() {
   let CHC = Number(document.getElementById("CHC").value);
   let PT = document.getElementById("PT").value;
   let OT = document.getElementById("OT").value;
-  let NS = document.getElementById("NS").value;
 
   let numberOfStaffers = EA + R + MA + IS + LA + BA + CHC;
   let startupfeeAfterTheDiscount = 0;
   let details = ``;
   let moreThanOneStaffer = 0;
   let stafferDetails = ``;
-  console.log(`
-number of staffers: ${numberOfStaffers} ${numberOfStaffers === 1}
-Opportunity Type: ${OT} ${OT === "New Deal"}
-Program Type: ${PT} ${PT.length === 0}
-Number of Sales: ${NS} ${NS !== "Multiple Sale"}
-`);
-  if (
-    numberOfStaffers === 1 &&
-    OT === "New Deal" &&
-    PT.length === 0 &&
-    NS !== "Multiple Sale"
-  ) {
+  if (numberOfStaffers === 1 && OT === "New Deal" && PT.length === 0) {
     startupfeeAfterTheDiscount = 975;
     document.getElementById("startupfee").value = startupfeeAfterTheDiscount;
     details = `Opportunity Type: ${OT}
       Number of staffers: 1
       Program type: ${PT}
-      Number of Sales: ${NS}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
-  } else if (
-    numberOfStaffers === 1 &&
-    OT === "New Deal" &&
-    (PT.length > 0 || NS === "Multiple Sale")
-  ) {
+  } else if (numberOfStaffers === 1 && OT === "New Deal" && PT.length > 0) {
     startupfeeAfterTheDiscount = 750;
     document.getElementById("startupfee").value = startupfeeAfterTheDiscount;
     details = `Opportunity Type: ${OT}
       Number of staffers: 1
       Program type: ${PT}
-      Number of Sales: ${NS}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
-  } else if (
-    numberOfStaffers > 1 &&
-    OT === "New Deal" &&
-    PT.length === 0 &&
-    NS !== "Multiple Sale"
-  ) {
+  } else if (numberOfStaffers > 1 && OT === "New Deal" && PT.length === 0) {
     moreThanOneStaffer = numberOfStaffers - 1;
     startupfeeAfterTheDiscount = 975 + moreThanOneStaffer * 750;
     document.getElementById("startupfee").value = 975;
@@ -70,14 +47,9 @@ Number of Sales: ${NS} ${NS !== "Multiple Sale"}
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
       Program type: ${PT}
-      Number of Sales: ${NS}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
-  } else if (
-    numberOfStaffers > 1 &&
-    OT === "New Deal" &&
-    (PT.length > 0 || NS === "Multiple Sale")
-  ) {
+  } else if (numberOfStaffers > 1 && OT === "New Deal" && PT.length > 0) {
     moreThanOneStaffer = numberOfStaffers - 1;
     startupfeeAfterTheDiscount = 750 + moreThanOneStaffer * 750;
     document.getElementById("startupfee").value = 750;
@@ -93,7 +65,6 @@ Number of Sales: ${NS} ${NS !== "Multiple Sale"}
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
       Program type: ${PT}
-      Number of Sales: ${NS}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
   } else if (numberOfStaffers === 1 && OT === "Fast-Track") {
@@ -102,7 +73,6 @@ Number of Sales: ${NS} ${NS !== "Multiple Sale"}
     details = `Opportunity Type: ${OT}
       Number of staffers: 1
       Program type: ${PT}
-      Number of Sales: ${NS}
       Startup Fee Total: $750.00`;
   } else if (numberOfStaffers > 1 && OT === "Fast-Track") {
     moreThanOneStaffer = numberOfStaffers - 1;
@@ -120,14 +90,12 @@ Number of Sales: ${NS} ${NS !== "Multiple Sale"}
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
       Program type: ${PT}
-      Number of Sales: ${NS}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
   } else if (numberOfStaffers === 0 && OT === "") {
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
       Program type: ${PT}
-      Number of Sales: ${NS}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
     alert("Select at least one staffer and one Opportunity Type!");
@@ -135,7 +103,6 @@ Number of Sales: ${NS} ${NS !== "Multiple Sale"}
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
       Program type: ${PT}
-      Number of Sales: ${NS}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
     alert("Select an Opportunity Type option!");
@@ -143,7 +110,6 @@ Number of Sales: ${NS} ${NS !== "Multiple Sale"}
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
       Program type: ${PT}
-      Number of Sales: ${NS}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
     alert("Select at least one staffer!");
@@ -151,7 +117,6 @@ Number of Sales: ${NS} ${NS !== "Multiple Sale"}
     details = `Opportunity Type: ${OT}
       Number of staffers: ${numberOfStaffers}
       Program type: ${PT}
-      Number of Sales: ${NS}
       ${stafferDetails}
       Startup Fee Total: $${startupfeeAfterTheDiscount}.00`;
     alert("Select at least one staffer!");
