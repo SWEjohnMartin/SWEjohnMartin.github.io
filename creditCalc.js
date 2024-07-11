@@ -15,6 +15,27 @@ function calculate() {
   let UDCM_bgColor = "rgb(239, 239, 239)";
   let NM_color = "rgb(80, 79, 79)";
   let NM_bgColor = "rgb(239, 239, 239)";
+  let message = "You are missing the following information: ";
+
+  if (RC === "" || TR === "" || OS === "" || BA === "") {
+    if (RC === "") {
+      message += `
+- Cancel/Replace value`;
+    }
+    if (TR === "") {
+      message += `
+- Termination/Resignation value`;
+    }
+    if (OS === "") {
+      message += `
+- Other Staffers? value`;
+    }
+    if (BA === "") {
+      message += `
+- Before 15th /After 15th value`;
+    }
+    alert(message);
+  }
 
   if (
     RC === "Replace" &&
