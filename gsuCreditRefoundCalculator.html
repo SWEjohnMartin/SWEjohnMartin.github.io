@@ -6,6 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="./css/bootstrap5.3.1.min.css" />
+    <style>
+      .checkbox {
+         text-align: center;
+      }
+      .checkboxes {
+        border-style: groove;
+        border-radius: 5px;
+        padding: 15px 15px 15px 50px;
+        margin-bottom: 200px;
+        background-color: rgb(232, 233, 233);
+      }
+      table, th, td {
+        border-collapse: collapase;
+        padding: 8px 24px 8px 24px;
+        border-radius: 10px;
+        background-color: rgb(245, 245, 245);
+      }
+    </style>
   </head>
 
   <body>
@@ -145,30 +163,62 @@
       </div>
       <div class="row">
         <div
-          class="col-md-10"
-          style="
-            border-style: groove;
-            border-radius: 5px;
-            padding: 15px 15px 15px 50px;
-            margin-bottom: 200px;
-          "
+          class="col-md-10 checkboxes"
         >
           <table>
-            <tbody>
+            <thead>
               <tr>
                 <th>Eligible for Refund Review</th>
+                <th>Click all that apply</th>
               </tr>
               <tr>
-                <td>
-                  <ul style="list-style-type: disc">
-                    <br />
-                    <li>Staffer Terminated for Cause</li>
-                    <li>2+ Staffers drop out whitin a month</li>
-                    <li>
-                      GSU error or gap in process (CX, Finance, Staffer HR)
-                    </li>
-                    <li>GSU unable to Replace</li>
-                  </ul>
+            </thead>
+            <tbody>
+                <td>Staffer Terminated for Cause</td>
+                <td class="checkbox">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    name="var1"
+                    id="var1"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>2+ Staffers drop out whitin a month</td>
+                <td class="checkbox">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    name="var2"
+                    id="var2"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>GSU error or gap in process (CX, Finance, Staffer HR)</td>
+                <td class="checkbox">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    name="var3"
+                    id="var3"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>GSU unable to Replace</td>
+                <td class="checkbox">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    name="var4"
+                    id="var4"
+                  />
                 </td>
               </tr>
             </tbody>
