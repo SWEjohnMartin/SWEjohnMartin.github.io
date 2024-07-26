@@ -169,5 +169,6 @@ function formatMoneyNumber(amount) {
       numberToString.slice(3, 6) +
       "," +
       numberToString.slice(6);
+  else if (stringLength <= 6) formattedNumber = "$" + numberToString;
   return formattedNumber;
 }
