@@ -60,7 +60,7 @@
         </div>
         <hr />
         <div
-          class="col-6 col-sm-12 col-md-6 col-lg-6"
+          class="col-12 col-sm-12 col-md-12 col-lg-6"
           style="
             border-style: groove;
             border-radius: 5px;
@@ -68,7 +68,7 @@
             background-color: rgb(71, 132, 132);
             color: rgb(255, 255, 255);
             padding: 20px;
-            height: 520px;
+            height: 260px;
           "
         >
           <p style="font-size: 18px">Please, select a Virtual Assistant</p>
@@ -76,10 +76,10 @@
             <label
               class="input-group-text"
               for="exampleFormControlSelect1"
-              style="width: 280px"
+              style="width: 180px"
               >Virtual Assistant Type</label
             >
-            <select class="form-select" id="VAT" style="max-width: 200px">
+            <select class="form-select" id="VAT" style="max-width: 240px">
               <option value="">Select an option</option>
               <option value="Executive Assistant">Executive Assistant</option>
               <option value="Receptionist">Receptionist</option>
@@ -112,7 +112,7 @@
           </div>
         </div>
         <div
-          class="col-5 col-sm-12 col-md-5 col-lg-5"
+          class="col-12 col-sm-12 col-md-12 col-lg-5"
           style="
             border-style: groove;
             border-radius: 5px;
@@ -124,20 +124,14 @@
         >
           <p style="font-size: larger">Savings Summary:</p>
           <div id="SR" style="height: 345px"><p>Waiting for input...</p></div>
-          <button
-            style="margin: 20px 0 0 240px"
-            class="btn btn-primary mb-2"
-            onclick="calculate()"
-          >
-            Calculate Savings
-          </button>
-          <button
-            class="btn btn-secondary"
-            onclick="location.reload();"
-            style="margin: 12px 0 0 0"
-          >
-            Clear Values
-          </button>
+          <div style="text-align: right; padding: 20px 0 0 0">
+            <button class="btn btn-primary" onclick="calculate()">
+              Calculate Savings
+            </button>
+            <button class="btn btn-secondary" onclick="location.reload();">
+              Clear Values
+            </button>
+          </div>
         </div>
       </div>
     </div>
