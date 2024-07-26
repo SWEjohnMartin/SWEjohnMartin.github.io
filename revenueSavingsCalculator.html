@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GSU Revenue Savings Calculator</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="./css/bootstrap5.3.1.min.css" />
+    <style>
+      .checkbox {
+        text-align: center;
+      }
+      .checkboxes {
+        border-style: groove;
+        border-radius: 5px;
+        padding: 15px 15px 15px 50px;
+        margin-bottom: 200px;
+        background-color: rgb(232, 233, 233);
+      }
+      table,
+      th,
+      td {
+        border-collapse: collapase;
+        padding: 8px 24px 8px 24px;
+        border-radius: 10px;
+        background-color: rgb(245, 245, 245);
+      }
+      .textAlingRight {
+        text-align: right;
+        padding-right: 40px;
+      }
+      .textAlingCenter {
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div
+          class="col-sm-12"
+          style="padding: 20px 0 20px 0; background-color: rgb(117, 117, 117)"
+        ></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <p style="font-size: 22px; padding: 20px 0 0 0">
+            GSU Revenue Savings Calculator <br />
+          </p>
+        </div>
+        <hr />
+        <div
+          class="col-6 col-sm-12 col-md-6 col-lg-6"
+          style="
+            border-style: groove;
+            border-radius: 5px;
+            border-color: rgb(48, 48, 56);
+            background-color: rgb(146, 144, 144);
+            color: rgb(255, 255, 255);
+            padding: 20px;
+            height: 520px;
+          "
+        >
+          <p style="font-size: 18px">Please, select a Virtual Assistant</p>
+          <div class="input-group mb-3">
+            <label
+              class="input-group-text"
+              for="exampleFormControlSelect1"
+              style="width: 280px"
+              >Virtual Assistant Type</label
+            >
+            <select class="form-select" id="VAT" style="max-width: 200px">
+              <option value="">Select an option</option>
+              <option value="Executive Assistant">Executive Assistant</option>
+              <option value="Receptionist">Receptionist</option>
+              <option value="Marketing Assistant">Marketing Assistant</option>
+              <option value="Intake Specialist">Intake Specialist</option>
+              <option value="Legal Assistant">Legal Assistant</option>
+              <option value="Billing Assistant">Billing Assistant</option>
+              <option value="Client Happiness Coordinator">
+                Client Happiness Coordinator
+              </option>
+              <option value="Virtual Case Manager">Virtual Case Manager</option>
+            </select>
+          </div>
+          <hr />
+          <p style="font-size: 18px">How much do you currently pay per hour?</p>
+          <div class="input-group mb-3" style="width: 50%">
+            <label
+              class="input-group-text"
+              for="exampleFormControlSelect1"
+              style="width: 140px"
+              >Hourly Wage</label
+            >
+            <input
+              class="form-control"
+              type="number"
+              id="HW"
+              style="text-align: right"
+              width="10px"
+            />
+          </div>
+        </div>
+        <div
+          class="col-5 col-sm-12 col-md-5 col-lg-5"
+          style="
+            border-style: groove;
+            border-radius: 5px;
+            border-color: rgb(48, 48, 56);
+            background-color: rgb(239, 239, 239);
+            color: rgb(80, 79, 79);
+            padding: 20px;
+          "
+        >
+          <p style="font-size: larger">Savings Summary:</p>
+          <div id="SR" style="height: 345px"><p>Waiting for input...</p></div>
+          <button
+            style="margin: 20px 0 0 240px"
+            class="btn btn-primary mb-2"
+            onclick="calculate()"
+          >
+            Calculate Savings
+          </button>
+          <button
+            class="btn btn-secondary"
+            onclick="location.reload();"
+            style="margin: 12px 0 0 0"
+          >
+            Clear Values
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/bootstrap5.3.1.bundle.min.js"></script>
+    <script src="/savings.js"></script>
+  </body>
+</html>
