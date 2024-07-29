@@ -2,6 +2,7 @@ function calculate() {
   let VAT = document.getElementById("VAT").value;
   let HW = document.getElementById("HW").value;
   let SR = document.getElementById("SR");
+  let MH = document.getElementById("MH").value;
 
   let monthlyWage = 0;
   let yearlyWage = 0;
@@ -54,7 +55,7 @@ function calculate() {
   }
 
   let VAT_AnnualSalary = VAT_MonthlySalary * 12;
-  monthlyWage = HW * 160;
+  monthlyWage = HW * MH;
   yearlyWage = monthlyWage * 12;
   let monthlyTotal = monthlyWage - VAT_MonthlySalary;
   let annualTotal = yearlyWage - VAT_AnnualSalary;
@@ -75,8 +76,13 @@ function calculate() {
 `;
     alertFlag = true;
   }
-  if ((VAT === "") | (HW === undefined)) {
+  if (VAT === "" || VAT === undefined) {
     alertMessage += `- The Virtual Assistant Type value is required!
+`;
+    alertFlag = true;
+  }
+  if (MH === "" || MH === undefined || MH === 0) {
+    alertMessage += `- The Monthly Hour value is required!
 `;
     alertFlag = true;
   }
