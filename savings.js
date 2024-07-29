@@ -93,17 +93,17 @@ function calculate() {
 <table class="table">
   <thead>
     <tr>
-      <th scope="col" class="textAlingCenter">Monthly Salaries</th>
+      <th scope="col" class="textAlingCenter">Monthly Cost</th>
       <th scope="col" class="textAlingCenter">Amount</th>
     </tr>
   </thead>
   <tbody>
   <tr>
-      <th scope="col">Conventional Staffer Salary:</th>
+      <th scope="col">Conventional Staffer Cost:</th>
       <td scope="col" class="textAlingRight">${monthlyWage}</td>
     </tr>
     <tr>
-      <th scope="row">GSU Staffer Salary:</th>
+      <th scope="row">GSU Staffer Cost:</th>
       <td class="textAlingRight">${VAT_MonthlySalary}</td>
     </tr>
     <tr>
@@ -115,17 +115,17 @@ function calculate() {
 <table class="table">
   <thead>
     <tr>
-      <th scope="col" class="textAlingCenter">Annual Salaries</th>
+      <th scope="col" class="textAlingCenter">Annual Cost</th>
       <th scope="col" class="textAlingCenter">Amount</th>
     </tr>
   </thead>
   <tbody>
   <tr>
-      <th scope="col">Conventional Staffer Salary:</th>
+      <th scope="col">Conventional Staffer Cost:</th>
       <td scope="col" class="textAlingRight">${yearlyWage}</td>
     </tr>
     <tr>
-      <th scope="row">GSU Staffer Salary:</th>
+      <th scope="row">GSU Staffer Cost:</th>
       <td class="textAlingRight">${VAT_AnnualSalary}</td>
     </tr>
     <tr>
