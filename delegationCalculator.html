@@ -6,192 +6,421 @@
     <link rel="stylesheet" href="./css/bootstrap5.3.1.min.css" />
     <title>Startup Fee Calculator</title>
     <style>
-        .rounded-border {
-            border: 2px solid lightgray; /* Light gray solid border */
-            border-radius: 10px; /* Rounded corners */
-            padding: 15px; /* Optional: adds some padding inside the div */
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-         input[type="number"], select {
-            width: 40%;
-            padding: 8px;
-            margin-top: 5px;
-        }
-        button {
-            display:block;
-            width: 200px;
-            border: none;
-            cursor: pointer;
-        }
-        .result {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        .title {
-            font-size: 28px;
-            font-weight: 500;
-            padding: 30px 0 0 0;
-        }
-        .title-2{
-            font-size: 24px;
-            font-weight: 500;
-            padding: 0 0 0 0;
-        }
-        .title-3{
-            font-size: 20px;
-            font-weight: 500;
-            padding: 0 0 0 0;
-        }
-        .button-position {
-            padding: 20px 20px 20px 20px;
-            text-align: right;
-        }
-        .width-50-percent {
-            width: 50%;
-        }
+      body {
+        background-image: url("./images/ea.png");
+        background-color: rgba(255, 255, 255, 0.6);
+        background-blend-mode: lighten;
+      }
+      .rounded-border {
+        border: 2px solid lightgray; /* Light gray solid border */
+        border-radius: 10px; /* Rounded corners */
+        padding: 15px; /* Optional: adds some padding inside the div */
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input[type="number"] {
+        width: 60%;
+        padding: 8px;
+        margin-top: 5px;
+      }
+      select {
+        width: 80%;
+        padding: 8px;
+        margin-top: 5px;
+      }
+      button {
+        display: block;
+      }
+      .result {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+      .title {
+        font-size: 28px;
+        font-weight: 500;
+        padding: 30px 0 0 0;
+      }
+      .title-2 {
+        font-size: 24px;
+        font-weight: 500;
+        padding: 0 0 0 0;
+      }
+      .title-3 {
+        font-size: 20px;
+        font-weight: 500;
+        padding: 0 0 0 0;
+      }
+      .button-position {
+        padding: 20px 20px 20px 20px;
+        text-align: right;
+      }
+      .width-50-percent {
+        width: 50%;
+      }
+      .color-1 {
+        background-color: rgb(234, 243, 244);
+      }
+      .color-2 {
+        background-color: rgb(254, 254, 254);
+      }
+      .color-3 {
+        background-color: rgb(237, 239, 243);
+      }
+      .align-right {
+        text-align: right;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p class="title">Delegation Calculator</p>
-            </div>
-            <div class="col-md-8 rounded-border">
-                <p class="title-2">Startup Fee Calculator</p>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                        <label for="hours">How many hours will it take to conduct the job search?</label>
-                        <input class="width-50-percent"
-                            type="number"
-                            id="hours"
-                            placeholder="Enter hours required for job search"
-                        />
-
-                        <label for="rate"
-                            >What is the billable rate of the internal team member conducting the
-                            job search?</label
-                        >
-                        <input type="number" id="rate" placeholder="Enter billable rate in $" />
-                    </div>
-                    <div class="col-md-6"><label for="referred">Were you referred?</label>
-                        <select id="referred">
-                            <option value="no">No</option>
-                            <option value="yes">Yes</option>
-                        </select>
-                    </div>
-                        <div class="col-md-6 button-position">
-                            <button class="btn btn-primary" onclick="calculateSF()">Calculate Startup Fee</button>
-                        </div>
-                    </div>
-                </div>
-
-
-                
-            </div>
-            <div class="col-md-4 rounded-border">
-                <p>Results</p>
-                <div class="result" id="result"></div>
-                <div class="result2" id="result2"></div>
-            </div>
-            <div class="col-md-8 rounded-border">
-                <p class="title-2">Admin Work Cost Calculator</p>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 rounded-border">
-                             <!-- Current Staff Inputs -->
-                            <p class="title-3">Current Staff Costs</p>
-                            <label for="currentRate">Hourly billable rate of current staff ($):</label>
-                            <input type="number" id="currentRate" placeholder="Enter hourly rate">
-
-                            <label for="currentHours">Hours spent by current staff per month:</label>
-                            <input type="number" id="currentHours" placeholder="Enter hours per month">
-                        </div>
-                        <div class="col-md-6 rounded-border">
-                            <!-- Offered Staff Inputs -->
-                            <p class="title-3">Offered Staff Costs</p>
-                            <label for="position">Select position:</label>
-                            <select id="position">
-                                <option value="1800">Executive Assistant ($1800/month)</option>
-                                <option value="1600">Receptionist ($1600/month)</option>
-                                <option value="1600">Marketing Assistant ($1600/month)</option>
-                            </select>
-
-                            <label for="bilingual">Is English-Spanish required?</label>
-                            <select id="bilingual">
-                                <option value="no">No</option>
-                                <option value="yes">Yes (add $200)</option>
-                            </select>
-                        </div>   
-                        <div class="col-md-12 button-position">
-                            <!-- Calculate Button -->
-                            <button class="btn btn-primary" onclick="calculateCost()">Calculate Cost</button>
-                        </div>   
-                    </div>
-                </div>
-
-               
-
-                
-
-                
-
-            </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="title">Delegation Calculator</p>
         </div>
-            
+        <div class="col-md-6 rounded-border color-1" style="margin: 0 30px 0 0">
+          <p class="title-2">Startup Fee Calculator</p>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <label for="hours"
+                  >How many hours will it take to conduct the job search?</label
+                >
+                <input
+                  class="width-50-percent"
+                  type="number"
+                  id="hours"
+                  placeholder="Enter hours required for job search"
+                />
+
+                <label for="rate"
+                  >What is the billable rate of the internal team member
+                  conducting the job search?</label
+                >
+                <input
+                  type="number"
+                  id="rate"
+                  placeholder="Enter billable rate in $"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="referred">Were you referred?</label>
+                <select id="referred">
+                  <option value="">Select an option</option>
+                  <option value="no">No</option>
+                  <option value="yes">Yes</option>
+                </select>
+              </div>
+              <div class="col-md-6 button-position">
+                <button
+                  id="button-1"
+                  class="btn btn-primary"
+                  onclick="calculateSF()"
+                >
+                  Calculate Startup Fee
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 rounded-border color-3" style="margin: 0 0 0 0">
+          <p class="title-3">Results</p>
+          <div class="result" id="result"></div>
+          <div class="result2" id="result2"></div>
+          <div class="result3" id="result3"></div>
+        </div>
+        <div class="col-md-8 rounded-border color-2" style="margin: 10px 0 0 0">
+          <p class="title-2">Admin Work Cost Calculator</p>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 rounded-border">
+                <!-- Current Staff Inputs -->
+                <p class="title-3">Current Staff Costs</p>
+                <label for="currentRate"
+                  >Hourly billable rate of current staff ($):</label
+                >
+                <input
+                  type="number"
+                  id="currentRate"
+                  placeholder="Enter hourly rate"
+                />
+
+                <label for="currentHours"
+                  >Hours spent by current staff per month:</label
+                >
+                <input
+                  type="number"
+                  id="currentHours"
+                  placeholder="Enter hours per month"
+                />
+              </div>
+              <div class="col-md-6 rounded-border">
+                <!-- Offered Staff Inputs -->
+                <p class="title-3">Offered Staff Costs</p>
+                <label for="position">Select position:</label>
+                <select id="position">
+                  <option value="">Select a position</option>
+                  <option value="Billing Assistant">Billing Assistant</option>
+                  <option value="Client Happiness Coordinator">
+                    Client Happiness Coordinator
+                  </option>
+                  <option value="Legal Assistant">Legal Assistant</option>
+                  <option value="Intake Specialist">Intake Specialist</option>
+                  <option value="Marketing Assistant">
+                    Marketing Assistant
+                  </option>
+                  <option value="Receptionist">Receptionist</option>
+                  <option value="Executive Assistant">
+                    Executive Assistant
+                  </option>
+                  <option value="Case Manager">Virtual Case Manager</option>
+                </select>
+
+                <label for="bilingual">Is English-Spanish required?</label>
+                <select id="bilingual">
+                  <option value="">Select an option</option>
+                  <option value="no">No</option>
+                  <option value="yes">Yes</option>
+                </select>
+              </div>
+              <div class="col-md-12 button-position">
+                <!-- Calculate Button -->
+                <button
+                  id="button-2"
+                  class="btn btn-primary"
+                  onclick="calculateCost()"
+                >
+                  Calculate Cost
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-</div>
-
     <script>
+      let firstButton = document.getElementById("button-2");
+      firstButton.disabled = true;
+      const lineItemTypesListNewPrices2024 = [
+        {
+          id: "Billing Assistant",
+          amount_english_spanish: "2195",
+          amount_english: "2045",
+        },
+        {
+          id: "Client Happiness Coordinator",
+          amount_english_spanish: "2295",
+          amount_english: "2145",
+        },
+        {
+          id: "Legal Assistant",
+          amount_english_spanish: "2645",
+          amount_english: "2445",
+        },
+        {
+          id: "Intake Specialist",
+          amount_english_spanish: "2445",
+          amount_english: "2295",
+        },
+        {
+          id: "Marketing Assistant",
+          amount_english_spanish: "2695",
+          amount_english: "2545",
+        },
+        {
+          id: "Receptionist",
+          amount_english_spanish: "2195",
+          amount_english: "2045",
+        },
+        {
+          id: "Executive Assistant",
+          amount_english_spanish: "2295",
+          amount_english: "2145",
+        },
+        {
+          id: "Case Manager",
+          amount_english_spanish: "2795",
+          amount_english: "2645",
+        },
+      ];
       function calculateSF() {
         // Get input values
-        var hours = document.getElementById("hours").value;
-        var rate = document.getElementById("rate").value;
-        var referred = document.getElementById("referred").value;
+        let hours = parseFloat(document.getElementById("hours").value);
+        let rate = parseFloat(document.getElementById("rate").value);
+        let referred = document.getElementById("referred").value;
 
         // Calculate internal recruiting cost
-        var internalCost = hours * rate;
+        let internalCost = hours * rate;
 
         // Calculate startup fee based on referral
-        var startupFee = referred === "yes" ? 750 : 975;
+        let startupFee = referred === "yes" ? 750 : 975;
 
         // Display results
-        var result = `
-            <p>Cost of Internal Recruiting: $${internalCost.toFixed(2)}</p>
-            <p>Startup Fee: $${startupFee}</p>
+        let result = `
+        <table class="table">
+  <thead>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Cost of Internal Recruiting:</th>
+      <td class= "align-right">$${internalCost.toFixed(2)}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Startup Fee:</th>
+      <td class= "align-right">$${startupFee.toFixed(2)}</td>
+
+    </tr>
+    
+  </tbody>
+</table>
+
         `;
 
-        document.getElementById("result").innerHTML = result;
+        let showAlert = [false, ""];
+
+        showAlert = isNumberValueNull(hours, showAlert, "Hours");
+
+        showAlert = isNumberValueNull(rate, showAlert, "Rate");
+
+        showAlert = isOptionNull(referred, showAlert, "Referred");
+
+        if (showAlert[0] === true) {
+          alert("The following fields can't be empty: " + showAlert[1]);
+        } else {
+          document.getElementById("result").innerHTML = result;
+          firstButton.disabled = false;
+          showAlert = [false, ""];
+        }
       }
+
       function calculateCost() {
         // Get input values for current staff
-        var currentRate = parseFloat(document.getElementById('currentRate').value);
-        var currentHours = parseFloat(document.getElementById('currentHours').value);
+        let currentRate = parseFloat(
+          document.getElementById("currentRate").value
+        );
+        let currentHours = parseFloat(
+          document.getElementById("currentHours").value
+        );
 
         // Get input values for offered staff
-        var positionCost = parseFloat(document.getElementById('position').value);
-        var bilingual = document.getElementById('bilingual').value;
+        let positionCost = 0;
+        let positionName = document.getElementById("position").value;
+        let bilingual = document.getElementById("bilingual").value;
 
-        // Calculate current staff monthly cost
-        var currentStaffCost = currentRate * currentHours;
-
-        // Calculate offered staff cost, add $200 if bilingual is required
-        if (bilingual === 'yes') {
-            positionCost += 200;
+        for (let i = 0; i < lineItemTypesListNewPrices2024.length; i++) {
+          if (lineItemTypesListNewPrices2024[i].id === positionName) {
+            if (bilingual === "yes") {
+              positionCost = parseFloat(
+                lineItemTypesListNewPrices2024[i].amount_english_spanish
+              );
+            } else {
+              positionCost = parseFloat(
+                lineItemTypesListNewPrices2024[i].amount_english
+              );
+            }
+          }
         }
 
+        // Calculate current staff monthly cost
+        let currentStaffCost = currentRate * currentHours;
+
         // Display results
-        var result = `
-            <p>Current Staff Monthly Cost: $${currentStaffCost.toFixed(2)}</p>
-            <p>Offered Staff Monthly Cost: $${positionCost}</p>
+        let result2 = `
+        <table class="table">
+  <thead>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Current Staff Monthly Cost:</th>
+      <td class= "align-right">$${currentStaffCost.toFixed(2)}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Offered Staff Monthly Cost:</th>
+      <td class= "align-right">$${positionCost.toFixed(2)}</td>
+
+    </tr>
+    
+  </tbody>
+</table>
+
         `;
-        document.getElementById('result2').innerHTML = result;
-    }
+
+        let monthlySavings = (currentStaffCost - positionCost) / 30;
+        let result3 = `
+        <table class="table">
+  <thead>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Monthly Net Revenue Missed per day:</th>
+      <td class= "align-right">$${monthlySavings.toFixed(2)}</td>
+
+    </tr>
+  </tbody>
+</table>
+
+        `;
+
+        let showAlert = [false, ""];
+
+        showAlert = isNumberValueNull(currentRate, showAlert, "Hourly Rate");
+        showAlert = isNumberValueNull(
+          currentHours,
+          showAlert,
+          "Hours per month"
+        );
+        showAlert = isOptionNull(positionName, showAlert, "Position option");
+        showAlert = isOptionNull(
+          bilingual,
+          showAlert,
+          "English-Spanish option"
+        );
+
+        if (showAlert[0] === true) {
+          alert("The following fields can't be empty: " + showAlert[1]);
+        } else {
+          document.getElementById("result2").innerHTML = result2;
+          document.getElementById("result3").innerHTML = result3;
+        }
+      }
+
+      function isNumberValueNull(variableName, flag, fieldName) {
+        if (
+          variableName === undefined ||
+          variableName === null ||
+          variableName === "" ||
+          isNaN(variableName) ||
+          variableName === 0
+        ) {
+          if (flag[1] === "") {
+            return [true, fieldName];
+          } else {
+            return [true, flag[1] + ", " + fieldName];
+          }
+        } else {
+          return [flag[0], flag[1]];
+        }
+      }
+
+      function isOptionNull(variableName, flag, fieldName) {
+        if (
+          variableName === undefined ||
+          variableName === null ||
+          variableName === ""
+        ) {
+          if (flag[1] === "") {
+            return [true, fieldName];
+          } else {
+            return [true, flag[1] + ", " + fieldName];
+          }
+        } else {
+          return [flag[0], flag[1]];
+        }
+      }
     </script>
     <script src="./js/bootstrap5.3.1.bundle.min.js"></script>
   </body>
