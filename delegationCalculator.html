@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap5.3.1.min.css" />
+    <title>Startup Fee Calculator</title>
+    <style>
+        .rounded-border {
+            border: 2px solid lightgray; /* Light gray solid border */
+            border-radius: 10px; /* Rounded corners */
+            padding: 15px; /* Optional: adds some padding inside the div */
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+         input[type="number"], select {
+            width: 40%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            display:block;
+            width: 200px;
+            border: none;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .title {
+            font-size: 28px;
+            font-weight: 500;
+            padding: 30px 0 0 0;
+        }
+        .title-2{
+            font-size: 24px;
+            font-weight: 500;
+            padding: 0 0 0 0;
+        }
+        .title-3{
+            font-size: 20px;
+            font-weight: 500;
+            padding: 0 0 0 0;
+        }
+        .button-position {
+            padding: 20px 20px 20px 20px;
+            text-align: right;
+        }
+        .width-50-percent {
+            width: 50%;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="title">Delegation Calculator</p>
+            </div>
+            <div class="col-md-8 rounded-border">
+                <p class="title-2">Startup Fee Calculator</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                        <label for="hours">How many hours will it take to conduct the job search?</label>
+                        <input class="width-50-percent"
+                            type="number"
+                            id="hours"
+                            placeholder="Enter hours required for job search"
+                        />
+
+                        <label for="rate"
+                            >What is the billable rate of the internal team member conducting the
+                            job search?</label
+                        >
+                        <input type="number" id="rate" placeholder="Enter billable rate in $" />
+                    </div>
+                    <div class="col-md-6"><label for="referred">Were you referred?</label>
+                        <select id="referred">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                        <div class="col-md-6 button-position">
+                            <button class="btn btn-primary" onclick="calculateSF()">Calculate Startup Fee</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+            </div>
+            <div class="col-md-4 rounded-border">
+                <p>Results</p>
+                <div class="result" id="result"></div>
+                <div class="result2" id="result2"></div>
+            </div>
+            <div class="col-md-8 rounded-border">
+                <p class="title-2">Admin Work Cost Calculator</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 rounded-border">
+                             <!-- Current Staff Inputs -->
+                            <p class="title-3">Current Staff Costs</p>
+                            <label for="currentRate">Hourly billable rate of current staff ($):</label>
+                            <input type="number" id="currentRate" placeholder="Enter hourly rate">
+
+                            <label for="currentHours">Hours spent by current staff per month:</label>
+                            <input type="number" id="currentHours" placeholder="Enter hours per month">
+                        </div>
+                        <div class="col-md-6 rounded-border">
+                            <!-- Offered Staff Inputs -->
+                            <p class="title-3">Offered Staff Costs</p>
+                            <label for="position">Select position:</label>
+                            <select id="position">
+                                <option value="1800">Executive Assistant ($1800/month)</option>
+                                <option value="1600">Receptionist ($1600/month)</option>
+                                <option value="1600">Marketing Assistant ($1600/month)</option>
+                            </select>
+
+                            <label for="bilingual">Is English-Spanish required?</label>
+                            <select id="bilingual">
+                                <option value="no">No</option>
+                                <option value="yes">Yes (add $200)</option>
+                            </select>
+                        </div>   
+                        <div class="col-md-12 button-position">
+                            <!-- Calculate Button -->
+                            <button class="btn btn-primary" onclick="calculateCost()">Calculate Cost</button>
+                        </div>   
+                    </div>
+                </div>
+
+               
+
+                
+
+                
+
+            </div>
+        </div>
+            
+    </div>
+
+</div>
+
+    <script>
+      function calculateSF() {
+        // Get input values
+        var hours = document.getElementById("hours").value;
+        var rate = document.getElementById("rate").value;
+        var referred = document.getElementById("referred").value;
+
+        // Calculate internal recruiting cost
+        var internalCost = hours * rate;
+
+        // Calculate startup fee based on referral
+        var startupFee = referred === "yes" ? 750 : 975;
+
+        // Display results
+        var result = `
+            <p>Cost of Internal Recruiting: $${internalCost.toFixed(2)}</p>
+            <p>Startup Fee: $${startupFee}</p>
+        `;
+
+        document.getElementById("result").innerHTML = result;
+      }
+      function calculateCost() {
+        // Get input values for current staff
+        var currentRate = parseFloat(document.getElementById('currentRate').value);
+        var currentHours = parseFloat(document.getElementById('currentHours').value);
+
+        // Get input values for offered staff
+        var positionCost = parseFloat(document.getElementById('position').value);
+        var bilingual = document.getElementById('bilingual').value;
+
+        // Calculate current staff monthly cost
+        var currentStaffCost = currentRate * currentHours;
+
+        // Calculate offered staff cost, add $200 if bilingual is required
+        if (bilingual === 'yes') {
+            positionCost += 200;
+        }
+
+        // Display results
+        var result = `
+            <p>Current Staff Monthly Cost: $${currentStaffCost.toFixed(2)}</p>
+            <p>Offered Staff Monthly Cost: $${positionCost}</p>
+        `;
+        document.getElementById('result2').innerHTML = result;
+    }
+    </script>
+    <script src="./js/bootstrap5.3.1.bundle.min.js"></script>
+  </body>
+</html>

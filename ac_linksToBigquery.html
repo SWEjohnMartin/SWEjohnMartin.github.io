@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ActiveCampaign links to BigQuery by Campaign Name</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+        margin-top: 100px;
+        background-color: #fff;
+        padding: 20px 20px 20px 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .inputBox {
+        max-width: 400px;
+        margin: auto;
+        padding: 30px 0 50px 0;
+      }
+      h1 {
+        text-align: center;
+        font-size: 24px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1>AC Campaign links to BigQuery Table</h1>
+        </div>
+        <div class="col inputBox">
+          <input type="text" id="inputText" placeholder="Enter Campaign Name" />
+          <button onclick="submitToWebhook()">Send to BigQuery</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function submitToWebhook() {
+        const inputText = document.getElementById("inputText").value;
+
+        if (inputText === undefined || inputText === "") {
+          alert("A Campaign Name is required!");
+        } else {
+          // Webhook URL (replace with your actual webhook URL)
+          const webhookUrl =
+            "https://hooks.zapier.com/hooks/catch/15033132/2hl0j2s/?" +
+            inputText;
+
+          // Send the input text as a parameter in the webhook
+          fetch(webhookUrl)
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Success:", data);
+              alert("Data submitted successfully!");
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert("There was an error submitting the data.");
+            });
+        }
+      }
+    </script>
+  </body>
+</html>

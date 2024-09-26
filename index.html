@@ -1,72 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>GSU Web Media Player</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clickable Image Grid</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+        padding: 20px;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .grid-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+      .grid-container img:hover {
+        transform: scale(1.05);
+      }
+    </style>
   </head>
-
-  <body >
-    <!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
-    
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm" style="background-color: rgb(12, 165, 139); color: aliceblue;">
-          <h1 style="padding: 15px 0 15px 15%;">GSU Applicants Module Media Player</h1>
-
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-8" style="padding: 20px 0 0 15%;">
-          <label for=""> <strong>Instructions:</strong> Copy the link of the video or audio file that you want to reproduce and paste it into the text box, then press the blue "Load Video File" button or press the ENTER key on your keyboard</label>
-        </div>
-      </div>
-      <div class="row" style="padding: 0 0 20px 15%;">
-        
-        <div class="col-sm-6">
-          
-          <input type="text" class="form-control" id="videoUrl" name="videoUrl">
-          
-          
-        </div>   
-        
-         
-      </div>
-      <div class="row" style="padding: 0 0 20px 15%;">
-        <div class="col-sm-6">
-          <button type="button" class="btn btn-primary">Load Video File</button>
-          <button onclick="document.getElementById('videoUrl').value = ''" type="button" class="btn btn-outline-secondary">Clear Text Box</button>
-          
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm" style="padding: 0 0 40px 15%;">
-          <video width="640" height="480" id="video" controls>
-            <source src="" type="video/mp4">
-            Video Tag not supported by your browser
-          </video>
-        </div>
-      </div>
+  <body>
+    <h1>Clickable Image Grid</h1>
+    <div class="grid-container">
+      <a href="./videoPlayer.html" target="_blank"
+        ><img src="./images/player.jpg" alt="Image 1"
+      /></a>
+      <a href="./ac_linksToBigquery.html" target="_blank"
+        ><img src="https://via.placeholder.com/150" alt="Image 2"
+      /></a>
+      <a href="https://example.com/3" target="_blank"
+        ><img src="https://via.placeholder.com/150" alt="Image 3"
+      /></a>
+      <a href="https://example.com/4" target="_blank"
+        ><img src="https://via.placeholder.com/150" alt="Image 4"
+      /></a>
+      <a href="https://example.com/5" target="_blank"
+        ><img src="https://via.placeholder.com/150" alt="Image 5"
+      /></a>
+      <a href="https://example.com/6" target="_blank"
+        ><img src="https://via.placeholder.com/150" alt="Image 6"
+      /></a>
+      <a href="https://example.com/7" target="_blank"
+        ><img src="https://via.placeholder.com/150" alt="Image 7"
+      /></a>
+      <a href="https://example.com/8" target="_blank"
+        ><img src="https://via.placeholder.com/150" alt="Image 8"
+      /></a>
+      <a href="https://example.com/9" target="_blank"
+        ><img src="https://via.placeholder.com/150" alt="Image 9"
+      /></a>
     </div>
-
-
-
-
-    <script type="text/javascript">
-      $( document ).ready(function() {
-        $('#videoUrl').on('change', function(e) {
-          var video = $('#video');
-          video.children('source').attr('src', $(this).val());
-          video[0].load();
-          video[0].play();
-        });
-      });
-    </script>
   </body>
 </html>
