@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send Email Data</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+      }
+      label {
+        display: block;
+        margin: 10px 0 5px;
+      }
+      input[type="text"],
+      input[type="email"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      button {
+        padding: 10px 15px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Send Email Data</h2>
+
+    <form id="emailForm">
+      <label for="recipientName">Recipient Name:</label>
+      <input type="text" id="recipientName" name="recipientName" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="emailSubject">Email Subject:</label>
+      <input type="text" id="emailSubject" name="emailSubject" required />
+
+      <label for="templateId">Choose a Buyout Agreement GSU Template:</label>
+      <select id="templateId" name="templateId">
+        <option value="">Choose Template</option>
+        <option value="installment">Installment</option>
+        <option value="tempalte_2">Tempalte 2</option>
+      </select>
+
+      <button type="button" onclick="sendData()">Send Data</button>
+    </form>
+
+    <script>
+      function sendData() {
+        // Get the form data
+        const recipientName = document.getElementById("recipientName").value;
+        const emailSubject = document.getElementById("emailSubject").value;
+        const email = document.getElementById("email").value;
+        const template = document.getElementById("templateId").value;
+
+        // Webhook URL
+        const webhookUrl =
+          "https://hooks.zapier.com/hooks/catch/15033132/2dpym93/"; // Replace with actual webhook URL
+
+        // Prepare data to send
+        const data = {
+          recipientName: recipientName,
+          emailSubject: emailSubject,
+          email: email,
+          template: template,
+        };
+
+        // Send data using Fetch API
+        fetch(webhookUrl, {
+          method: "POST",
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            alert("Data sent successfully!");
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    </script>
+  </body>
+</html>
