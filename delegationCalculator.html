@@ -35,7 +35,12 @@
       }
       .result {
         margin-top: 20px;
-        font-weight: bold;
+      }
+      .red-font {
+        color: red;
+      }
+      .green-font {
+        color: green;
       }
       .title {
         font-size: 28px;
@@ -335,12 +340,16 @@
   <tbody>
     <tr>
       <th scope="row">Current Staff Monthly Cost:</th>
-      <td class= "align-right">$${currentStaffCost.toFixed(2)}</td>
+      <td class= "align-right" style="color:red; font-weight:500">$${currentStaffCost.toFixed(
+        2
+      )}</td>
 
     </tr>
     <tr>
       <th scope="row">Offered Staff Monthly Cost:</th>
-      <td class= "align-right">$${positionCost.toFixed(2)}</td>
+      <td class= "align-right" style="color:green;  font-weight:500">$${positionCost.toFixed(
+        2
+      )}</td>
 
     </tr>
     
@@ -357,7 +366,9 @@
   <tbody>
     <tr>
       <th scope="row">Net Revenue Missed per day:</th>
-      <td class= "align-right">$${monthlySavings.toFixed(2)}</td>
+      <td class= "align-right" style="color:red; font-weight:500">$${monthlySavings.toFixed(
+        2
+      )}</td>
 
     </tr>
   </tbody>
