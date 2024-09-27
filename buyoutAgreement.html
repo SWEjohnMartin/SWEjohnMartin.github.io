@@ -3,15 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Send Email Data</title>
+    <link rel="stylesheet" href="./css/bootstrap5.3.1.min.css" />
+    <title>Generate GSU Buyout Agreement</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
+        background-color: rgb(233, 233, 233);
       }
       label {
         display: block;
@@ -19,55 +15,137 @@
       }
       input[type="text"],
       input[type="email"] {
-        width: 100%;
+        width: 70%;
         padding: 8px;
         margin-bottom: 20px;
         border-radius: 5px;
         border: 1px solid #ccc;
       }
-      button {
-        padding: 10px 15px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
+      .top-bar {
+        padding: 20px 0 20px 0;
+        background-color: rgb(18, 18, 39);
+        margin-bottom: 40px;
       }
-      button:hover {
-        background-color: #45a049;
+      .bottom-bar {
+        padding: 100px 0 100px 0;
+        background-color: rgb(24, 77, 137);
+      }
+      .align-right {
+        text-align: right;
+      }
+      .center {
+        margin: auto;
+      }
+      .button-position {
+        padding: 10px 100px 100px 0;
       }
     </style>
   </head>
   <body>
-    <h2>Send Email Data</h2>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 top-bar"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 center">
+          <h2>Generate GSU Buyout Agreement</h2>
 
-    <form id="emailForm">
-      <label for="recipientName">Recipient Name:</label>
-      <input type="text" id="recipientName" name="recipientName" required />
+          <form id="emailForm">
+            <label for="recipientName">Recipient Name:</label>
+            <input
+              type="text"
+              id="recipientName"
+              name="recipientName"
+              required
+            />
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
 
-      <label for="emailSubject">Email Subject:</label>
-      <input type="text" id="emailSubject" name="emailSubject" required />
+            <label for="emailSubject">Email Subject:</label>
+            <input type="text" id="emailSubject" name="emailSubject" required />
 
-      <label for="templateId">Choose a Buyout Agreement GSU Template:</label>
-      <select id="templateId" name="templateId">
-        <option value="">Choose Template</option>
-        <option value="installment">Installment</option>
-        <option value="tempalte_2">Tempalte 2</option>
-      </select>
+            <input
+              type="text"
+              value="installment"
+              id="templateId"
+              name="templateId"
+              required
+              hidden
+            />
 
-      <button type="button" onclick="sendData()">Send Data</button>
-    </form>
+            <label for="stafferName">Staffer's Name:</label>
+            <input type="text" id="stafferName" name="stafferName" required />
+
+            <label for="buyoutFeeText">Buyout Fee Text:</label>
+            <input
+              type="text"
+              id="buyoutFeeText"
+              name="buyoutFeeText"
+              required
+            />
+
+            <label for="buyoutFeeNumber">Buyout Fee Number:</label>
+            <input
+              type="number"
+              id="buyoutFeeNumber"
+              name="buyoutFeeNumber"
+              required
+            />
+
+            <label for="payableOnDate">Payable On Date:</label>
+            <input
+              type="date"
+              id="payableOnDate"
+              name="payableOnDate"
+              required
+            />
+
+            <label for="RepresentativeName"
+              >Authorized Representative Name:</label
+            >
+            <input
+              type="text"
+              id="RepresentativeName"
+              name="RepresentativeName"
+              required
+            />
+            <br />
+            <div class="align-right button-position">
+              <button
+                class="btn btn-primary"
+                type="button"
+                onclick="sendData()"
+              >
+                Generate Agreement
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 bottom-bar"></div>
+      </div>
+    </div>
 
     <script>
       function sendData() {
         // Get the form data
         const recipientName = document.getElementById("recipientName").value;
-        const emailSubject = document.getElementById("emailSubject").value;
         const email = document.getElementById("email").value;
+        const emailSubject = document.getElementById("emailSubject").value;
         const template = document.getElementById("templateId").value;
+        const stafferName = document.getElementById("stafferName").value;
+        const buyoutFeeText = document.getElementById("buyoutFeeText").value;
+        const buyoutFeeNumber =
+          document.getElementById("buyoutFeeNumber").value;
+        const payableOnDate = document.getElementById("payableOnDate").value;
+        const RepresentativeName =
+          document.getElementById("RepresentativeName").value;
 
         // Webhook URL
         const webhookUrl =
@@ -79,6 +157,11 @@
           emailSubject: emailSubject,
           email: email,
           template: template,
+          stafferName: stafferName,
+          buyoutFeeText: buyoutFeeText,
+          buyoutFeeNumber: buyoutFeeNumber,
+          payableOnDate: payableOnDate,
+          RepresentativeName: RepresentativeName,
         };
 
         // Send data using Fetch API
