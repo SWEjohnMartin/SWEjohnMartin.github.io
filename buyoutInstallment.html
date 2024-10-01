@@ -50,10 +50,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 center">
-          <h2>Generate GSU Buyout Agreement (Template 2)</h2>
+          <h2>Generate GSU Buyout Agreement (Installment)</h2>
 
           <form id="emailForm">
-            <label for="recipientName">Recipient/Client Name:</label>
+            <label for="recipientName">Signer's Name:</label>
             <input
               type="text"
               id="recipientName"
@@ -61,28 +61,52 @@
               required
             />
 
-            <label for="clientTitle">Client Title:</label>
-            <input type="text" id="clientTitle" name="clientTitle" required />
-
-            <label for="email">Email:</label>
+            <label for="email">Signer's Email:</label>
             <input type="email" id="email" name="email" required />
+
+            <hr />
+            <label for="AdditionalRecipientName"
+              >Additional Recipient's Name:</label
+            >
+            <input
+              type="text"
+              id="AdditionalRecipientName"
+              name="AdditionalRecipientName"
+              required
+            />
+
+            <label for="AdditionalRecipientEmail"
+              >Additional Recipient's Email:</label
+            >
+            <input
+              type="email"
+              id="AdditionalRecipientEmail"
+              name="AdditionalRecipientEmail"
+              required
+            />
+            <hr />
 
             <label for="emailSubject">Email Subject:</label>
             <input type="text" id="emailSubject" name="emailSubject" required />
 
+            <hr />
+
             <input
               type="text"
-              value="template-2"
+              value="installment"
               id="templateId"
               name="templateId"
               required
               hidden
             />
 
+            <label for="clientTitle">Signer's Title:</label>
+            <input type="text" id="clientTitle" name="clientTitle" required />
+
             <label for="stafferName">Staffer's Name:</label>
             <input type="text" id="stafferName" name="stafferName" required />
 
-            <label for="buyoutFeeNumber">One Time Buyout Fee (Number):</label>
+            <label for="buyoutFeeNumber">Buyout Fee (Number):</label>
             <input
               type="number"
               id="buyoutFeeNumber"
@@ -90,27 +114,11 @@
               required
             />
 
-            <label for="equalInstall">Number of equal installments:</label>
-            <input
-              type="number"
-              id="equalInstall"
-              name="equalInstall"
-              required
-            />
-
-            <label for="firstPaymentDate">First Payment Date:</label>
+            <label for="payableOnDate">Payable On Date:</label>
             <input
               type="date"
-              id="firstPaymentDate"
-              name="firstPaymentDate"
-              required
-            />
-
-            <label for="secondPaymentDate">Second Payment Date:</label>
-            <input
-              type="date"
-              id="secondPaymentDate"
-              name="secondPaymentDate"
+              id="payableOnDate"
+              name="payableOnDate"
               required
             />
 
@@ -181,27 +189,23 @@
         let buyoutFeeNumber = Number(
           document.getElementById("buyoutFeeNumber").value
         );
-        const firstPaymentDate = dateFormatter(
-          document.getElementById("firstPaymentDate").value
-        );
+        const buyoutFeeText = numberToText(buyoutFeeNumber);
+        let payableOnDate = document.getElementById("payableOnDate").value;
 
-        const secondPaymentDate = dateFormatter(
-          document.getElementById("secondPaymentDate").value
-        );
+        payableOnDate = dateFormatter(payableOnDate);
+
+        buyoutFeeNumber = buyoutFeeNumber.toFixed(2);
+
         const RepresentativeName =
           document.getElementById("RepresentativeName").value;
         const clientTitle = document.getElementById("clientTitle").value;
-        const equalInstall = Number(
-          document.getElementById("equalInstall").value
-        );
 
-        let buyoutFeeText = numberToText(buyoutFeeNumber);
-        let equalInstallAmount = Math.ceil(buyoutFeeNumber / equalInstall);
-
-        let equalInstallAmountText = numberToText(equalInstallAmount);
-
-        equalInstallAmount = equalInstallAmount.toFixed(2);
-        buyoutFeeNumber = buyoutFeeNumber.toFixed(2);
+        const AdditionalRecipientName = document.getElementById(
+          "AdditionalRecipientName"
+        ).value;
+        const AddotionalRecipientEmail = document.getElementById(
+          "AdditionalRecipientEmail"
+        ).value;
 
         // Webhook URL
         const webhookUrl =
@@ -216,27 +220,34 @@
           stafferName: stafferName,
           buyoutFeeText: buyoutFeeText,
           buyoutFeeNumber: buyoutFeeNumber,
-          firstPaymentDate: firstPaymentDate,
-          secondPaymentDate: secondPaymentDate,
+          payableOnDate: payableOnDate,
           RepresentativeName: RepresentativeName,
           clientTitle: clientTitle,
-          equalInstall: equalInstall,
-          equalInstallAmount: equalInstallAmount,
-          equalInstallAmountText: equalInstallAmountText,
+          AdditionalRecipientName: AdditionalRecipientName,
+          AddotionalRecipientEmail: AddotionalRecipientEmail,
         };
 
-        // Send data using Fetch API
-        fetch(webhookUrl, {
-          method: "POST",
-          body: JSON.stringify(data),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            alert("Data sent successfully!");
+        if (
+          recipientName === "" ||
+          recipientName === undefined ||
+          email === "" ||
+          email === undefined
+        ) {
+          alert("Signer's name and email cannot be empty.");
+        } else {
+          // Send data using Fetch API
+          fetch(webhookUrl, {
+            method: "POST",
+            body: JSON.stringify(data),
           })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
+            .then((response) => response.json())
+            .then((data) => {
+              alert("Data sent successfully!");
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        }
       }
 
       function numberToText(num) {
