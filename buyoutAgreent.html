@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/bootstrap5.3.1.min.css" />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Generate GSU Buyout Agreement</title>
     <style>
       body {
@@ -112,11 +115,6 @@
             />
             <hr />
 
-            <label for="emailSubject">Email Subject:</label>
-            <input type="text" id="emailSubject" name="emailSubject" required />
-
-            <hr />
-
             <input
               type="text"
               value="template-2"
@@ -210,7 +208,6 @@
         const cxEmail = document.getElementById("cxEmail").value;
         const recipientName = document.getElementById("recipientName").value;
         const email = document.getElementById("email").value;
-        const emailSubject = document.getElementById("emailSubject").value;
         const template = document.getElementById("templateId").value;
         const stafferName = document.getElementById("stafferName").value;
         let buyoutFeeNumber = Number(
@@ -241,7 +238,6 @@
         // Prepare data to send
         const data = {
           recipientName: recipientName,
-          emailSubject: emailSubject,
           email: email,
           template: template,
           stafferName: stafferName,
