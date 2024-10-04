@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/bootstrap5.3.1.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Generate GSU Buyout Agreement</title>
     <style>
       body {
@@ -39,6 +43,19 @@
       .button-position {
         padding: 10px 100px 100px 0;
       }
+      .btnHome {
+        background-color: DodgerBlue;
+        border: none;
+        color: white;
+        padding: 12px 16px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      /* Darker background on mouse-over */
+      .btnHome:hover {
+        background-color: RoyalBlue;
+      }
     </style>
   </head>
   <body>
@@ -49,10 +66,22 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-md-6 center">
-          <h2>Generate GSU Buyout Agreement (Installment)</h2>
-
+        <div class="col-md-7 center">
+          <h2>Generate GSU Buyout Agreement (Installments)</h2>
+          <div
+            class="home-button"
+            onclick="window.location.href='./buyoutAgreementsIndex.html';"
+          >
+            <button class="btnHome"><i class="fa fa-home"></i> Home</button>
+          </div>
+        </div>
+        <div class="col-md-7 center">
           <form id="emailForm">
+            <label for="cxEmail">Team Member's Email:</label>
+            <input type="email" id="cxEmail" name="cxEmail" required />
+
+            <hr />
+
             <label for="recipientName">Signer's Name:</label>
             <input
               type="text"
@@ -199,6 +228,7 @@
 
       function sendData() {
         // Get the form data
+        const cxEmail = document.getElementById("cxEmail").value;
         const recipientName = document.getElementById("recipientName").value;
         const email = document.getElementById("email").value;
         const emailSubject = document.getElementById("emailSubject").value;
@@ -258,6 +288,7 @@
           equalInstallAmountText: equalInstallAmountText,
           AdditionalRecipientName: AdditionalRecipientName,
           AddotionalRecipientEmail: AddotionalRecipientEmail,
+          cxEmail: cxEmail,
         };
 
         // Send data using Fetch API
