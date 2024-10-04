@@ -77,12 +77,18 @@
         </div>
         <div class="col-md-7 center">
           <form id="emailForm">
-            <label for="cxEmail">Team Member's Email:</label>
-            <input type="email" id="cxEmail" name="cxEmail" required />
+            <label for="cxEmail">Team Member's Email*:</label>
+            <input
+              type="email"
+              id="cxEmail"
+              name="cxEmail"
+              required
+              placeholder="Email to receive the envelope URL for review"
+            />
 
             <hr />
 
-            <label for="recipientName">Signer's Name:</label>
+            <label for="recipientName">Signer's Name*:</label>
             <input
               type="text"
               id="recipientName"
@@ -90,7 +96,7 @@
               required
             />
 
-            <label for="email">Signer's Email:</label>
+            <label for="email">Signer's Email*:</label>
             <input type="email" id="email" name="email" required />
 
             <hr />
@@ -125,7 +131,13 @@
             />
 
             <label for="clientTitle">Signer's Title:</label>
-            <input type="text" id="clientTitle" name="clientTitle" required />
+            <input
+              type="text"
+              id="clientTitle"
+              name="clientTitle"
+              required
+              placeholder="Owner, manager, etc."
+            />
 
             <label for="stafferName">Staffer's Name:</label>
             <input type="text" id="stafferName" name="stafferName" required />
@@ -255,9 +267,13 @@
           recipientName === "" ||
           recipientName === undefined ||
           email === "" ||
-          email === undefined
+          email === undefined ||
+          cxEmail === "" ||
+          cxEmail === undefined
         ) {
-          alert("Signer's name and email cannot be empty.");
+          alert(
+            "Signer's name and email or Team member email cannot be empty."
+          );
         } else {
           // Send data using Fetch API
           fetch(webhookUrl, {
