@@ -323,7 +323,10 @@
         }
       }
 
-      function numberToText(num) {
+      function numberToText(numRaw) {
+        let numArray = numRaw.toFixed(2).split(".");
+        let num = Number(numArray[0]);
+
         if (num < 0 || num > 50000) {
           return "Number is out of range (should be between 0 and 50,000)";
         }
@@ -406,7 +409,7 @@
             thousandIndex++;
           }
 
-          return result.trim();
+          return result.trim() + " & " + numArray[1] + "/100";
         }
 
         return convertToText(num);
