@@ -130,15 +130,6 @@
               hidden
             />
 
-            <label for="clientTitle">Signer's Title:</label>
-            <input
-              type="text"
-              id="clientTitle"
-              name="clientTitle"
-              required
-              placeholder="Owner, manager, etc."
-            />
-
             <label for="stafferName">Staffer's Name:</label>
             <input type="text" id="stafferName" name="stafferName" required />
 
@@ -158,15 +149,6 @@
               required
             />
 
-            <label for="RepresentativeName"
-              >Authorized Representative Name:</label
-            >
-            <input
-              type="text"
-              id="RepresentativeName"
-              name="RepresentativeName"
-              required
-            />
             <br />
             <div class="align-right button-position">
               <button
@@ -283,6 +265,7 @@
             .then((response) => response.json())
             .then((data) => {
               alert("Data sent successfully!");
+              location.replace("./buyoutAgreementsIndex.html");
             })
             .catch((error) => {
               console.error("Error:", error);
