@@ -152,12 +152,12 @@
                 />
 
                 <label for="currentHours"
-                  >Hours spent by current staff per month:</label
+                  >Hours spent by current staff per week:</label
                 >
                 <input
                   type="number"
                   id="currentHours"
-                  placeholder="Enter hours per month"
+                  placeholder="Enter hours per week"
                 />
               </div>
               <div class="col-md-6 rounded-border">
@@ -330,6 +330,7 @@
         }
 
         // Calculate current staff monthly cost
+        currentHours *= 4;
         let currentStaffCost = currentRate * currentHours;
 
         // Display results
@@ -340,14 +341,14 @@
   <tbody>
     <tr>
       <th scope="row">Current Staff Monthly Cost:</th>
-      <td class= "align-right" style="color:red; font-weight:500">$${currentStaffCost.toFixed(
+      <td class= "align-right" style="color:red; font-weight:500; font-size:28px">$${currentStaffCost.toFixed(
         2
       )}</td>
 
     </tr>
     <tr>
       <th scope="row">Offered Staff Monthly Cost:</th>
-      <td class= "align-right" style="color:green;  font-weight:500">$${positionCost.toFixed(
+      <td class= "align-right" style="color:green;  font-weight:500; font-size:32px">$${positionCost.toFixed(
         2
       )}</td>
 
@@ -358,15 +359,15 @@
 
         `;
 
-        let monthlySavings = (currentStaffCost - positionCost) / 30;
+        let monthlySavings = currentStaffCost - positionCost;
         let result3 = `
         <table class="table">
   <thead>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Net Revenue Missed per day:</th>
-      <td class= "align-right" style="color:red; font-weight:500">$${monthlySavings.toFixed(
+      <th scope="row">Net Revenue Missed per month:</th>
+      <td class= "align-right" style="color:red; font-weight:500; font-size:28px">$${monthlySavings.toFixed(
         2
       )}</td>
 
