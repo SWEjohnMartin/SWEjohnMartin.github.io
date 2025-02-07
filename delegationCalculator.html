@@ -451,7 +451,9 @@
       <hr class="cutom-hr" style="border: none;height: 8px;background: rgb(166, 196, 59);margin: 5px 0;">
               `;
 
+        let yearlySavings = formatCurrency(monthlySavings * 12);
         monthlySavings = formatCurrency(monthlySavings);
+
         let result3 = `
               <table class="table">
         <thead>
@@ -460,6 +462,11 @@
           <tr>
             <th scope="row" style="padding-top:25px; font-family: 'Montserrat', sans-serif; color:rgba(44, 176, 176, 0.973); font-weight:bolf; font-size:14px">NET REVENUE MISSED PER MONTH:</th>
             <td class= "align-right" style="color:rgb(212, 89, 89); font-weight:500; font-size:24px">${monthlySavings}</td>
+
+          </tr>
+          <tr>
+            <th scope="row" style="padding-top:25px; font-family: 'Montserrat', sans-serif; color:rgba(44, 176, 176, 0.973); font-weight:bolf; font-size:14px">NET REVENUE MISSED PER YEAR:</th>
+            <td class= "align-right" style="color:rgb(212, 89, 89); font-weight:500; font-size:24px">${yearlySavings}</td>
 
           </tr>
         </tbody>
