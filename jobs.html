@@ -3,154 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cookie Viewer</title>
-    <style>
-      table {
-        width: 50%;
-        border-collapse: collapse;
-        margin-top: 200px;
+    <title>Decrypted User Data</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const encryptedParam = urlParams.get("data");
+
+        if (!encryptedParam) {
+          document.body.innerHTML = "<h2>No encrypted data found in URL.</h2>";
+          return;
+        }
+
+        try {
+          // Extract encrypted data and IV
+          const [encryptedData, iv] = encryptedParam
+            .split(".")
+            .map(decodeBase64);
+
+          // Use a predefined key (this must match the one used for encryption)
+          const key = await generateKey();
+
+          // Decrypt the data
+          const decryptedText = await decryptString(encryptedData, iv, key);
+
+          // Display result in an HTML table
+          document.body.innerHTML = `
+                    <h2>Decrypted Data</h2>
+                    <table border="1">
+                        <tr><th>Field</th><th>Value</th></tr>
+                        <tr><td>Username</td><td>${decryptedText}</td></tr>
+                    </table>
+                `;
+        } catch (error) {
+          console.error("Decryption failed:", error);
+          document.body.innerHTML = "<h2>Error decrypting data.</h2>";
+        }
+      });
+
+      // Function to generate the same AES-GCM key (use the same key as in encryption)
+      async function generateKey() {
+        return crypto.subtle.generateKey(
+          { name: "AES-GCM", length: 256 },
+          true,
+          ["encrypt", "decrypt"]
+        );
       }
-      th,
-      td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: left;
+
+      // Function to decrypt the encrypted string
+      async function decryptString(encryptedData, iv, key) {
+        const decrypted = await crypto.subtle.decrypt(
+          { name: "AES-GCM", iv },
+          key,
+          encryptedData
+        );
+
+        return new TextDecoder().decode(decrypted);
       }
-      th {
-        background-color: #f2f2f2;
+
+      // Helper function to decode Base64 to ArrayBuffer
+      function decodeBase64(str) {
+        const binary = atob(str);
+        const len = binary.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+          bytes[i] = binary.charCodeAt(i);
+        }
+        return bytes.buffer;
       }
-    </style>
+    </script>
   </head>
   <body>
-    <nav
-      style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: #ffffff;
-        color: #4e4b4b;
-        padding: 10px 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      "
-    >
-      <div style="width: 100%; padding: 10px 10px 10px 10px">
-        <div style="width: 20%; float: left">
-          <a href="${BASE_URL}">
-            <img
-              src="https://worklatam-website-dev.azurewebsites.net/images/work-latam-logo-new.png"
-              alt="GSU Logo"
-              height="40"
-              style="padding: 2px 0 0 24px"
-            />
-          </a>
-        </div>
-        <div
-          style="
-            width: 60%;
-            float: left;
-            text-align: center;
-            padding: 10px 0 0 0;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-              'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: black;
-          "
-        >
-          <a
-            href="${BASE_URL}/"
-            style="
-              padding: 10px 20px;
-              margin: 0 10px;
-              text-decoration: none;
-              color: #525050;
-            "
-            >Home</a
-          >
-          <a
-            href="${BASE_URL}/for-employers"
-            style="
-              text-decoration: none;
-              padding: 10px 20px;
-              margin: 0 10px;
-              color: #525050;
-            "
-            >For Employers</a
-          >
-          <a
-            href="${BASE_URL}/for-job-seekers"
-            style="
-              color: #525050;
-              text-decoration: none;
-              padding: 10px 20px;
-              margin: 0 10px;
-            "
-            >For Job Seekers</a
-          >
-          <a
-            href="${BASE_URL}/login"
-            style="
-              color: rgb(78, 209, 18);
-              text-decoration: none;
-              padding: 10px 20px;
-              margin: 0 10px;
-            "
-            >LogIn</a
-          >
-
-          <a
-            href="${BASE_URL}/jobs"
-            style="
-              color: #525050;
-              text-decoration: none;
-              padding: 10px 20px;
-              margin: 0 10px;
-            "
-            >Find a Job</a
-          >
-          <a
-            href="${BASE_URL}/post-job-prompt"
-            style="
-              color: #525050;
-              text-decoration: none;
-              padding: 10px 20px;
-              margin: 0 10px;
-            "
-            >Post a Job</a
-          >
-        </div>
-      </div>
-    </nav>
-
-    <h2>Cookies Stored in Your Browser</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Cookie Name</th>
-          <th>Cookie Value</th>
-        </tr>
-      </thead>
-      <tbody id="cookieTableBody"></tbody>
-    </table>
-
-    <script>
-      function getCookies() {
-        let cookies = document.cookie.split("; ");
-        let tableBody = document.getElementById("cookieTableBody");
-        tableBody.innerHTML = "";
-
-        cookies.forEach((cookie) => {
-          let [name, value] = cookie.split("=");
-          let row = document.createElement("tr");
-          row.innerHTML = `<td>${name}</td><td>${value}</td>`;
-          tableBody.appendChild(row);
-        });
-      }
-
-      window.onload = getCookies;
-    </script>
+    <h2>Processing...</h2>
   </body>
 </html>
