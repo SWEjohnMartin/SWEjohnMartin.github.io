@@ -18,9 +18,9 @@
           // Extract encrypted data and IV
           const [encryptedData, iv] = encryptedParam
             .split(".")
-            .map(decodeBase64);
+            .map(base64ToArrayBuffer);
 
-          // Use a predefined key (this must match the one used for encryption)
+          // Use the same pre-shared key as in encryption
           const key = await generateKey();
 
           // Decrypt the data
@@ -40,33 +40,34 @@
         }
       });
 
-      // Function to generate the same AES-GCM key (use the same key as in encryption)
+      // Use the same pre-shared key for decryption
       async function generateKey() {
-        return crypto.subtle.generateKey(
-          { name: "AES-GCM", length: 256 },
-          true,
+        const keyData = new TextEncoder().encode("my_secret_fixed_key_123456"); // Must match encryption
+        return crypto.subtle.importKey(
+          "raw",
+          keyData,
+          { name: "AES-GCM" },
+          false,
           ["encrypt", "decrypt"]
         );
       }
 
-      // Function to decrypt the encrypted string
+      // Decrypt the string using AES-GCM
       async function decryptString(encryptedData, iv, key) {
         const decrypted = await crypto.subtle.decrypt(
           { name: "AES-GCM", iv },
           key,
           encryptedData
         );
-
         return new TextDecoder().decode(decrypted);
       }
 
-      // Helper function to decode Base64 to ArrayBuffer
-      function decodeBase64(str) {
-        const binary = atob(str);
-        const len = binary.length;
-        const bytes = new Uint8Array(len);
-        for (let i = 0; i < len; i++) {
-          bytes[i] = binary.charCodeAt(i);
+      // Convert Base64 to ArrayBuffer
+      function base64ToArrayBuffer(base64) {
+        const binaryString = atob(base64);
+        const bytes = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) {
+          bytes[i] = binaryString.charCodeAt(i);
         }
         return bytes.buffer;
       }
