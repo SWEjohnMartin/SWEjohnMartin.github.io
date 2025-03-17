@@ -42,7 +42,9 @@
 
       // Use the same pre-shared key for decryption
       async function generateKey() {
-        const keyData = new TextEncoder().encode("my_secret_fixed_key_123456"); // Must match encryption
+        const keyData = new TextEncoder().encode(
+          "my_secret_fixed_key_123456789012"
+        ); // Must match encryption
         return crypto.subtle.importKey(
           "raw",
           keyData,
