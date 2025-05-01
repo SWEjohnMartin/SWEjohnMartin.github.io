@@ -167,6 +167,14 @@
               required
             />
 
+            <label for="buyoutAgreementDate">Buyout Agreement Date:</label>
+            <input
+              type="date"
+              id="buyoutAgreementDate"
+              name="buyoutAgreementDate"
+              required
+            />
+
             <br />
             <div class="align-right button-position">
               <button
@@ -233,6 +241,10 @@
           document.getElementById("secondPaymentDate").value
         );
 
+        const buyoutAgreementDate = dateFormatter(
+          document.getElementById("buyoutAgreementDate").value
+        );
+
         const equalInstall = Number(
           document.getElementById("equalInstall").value
         );
@@ -266,6 +278,7 @@
           buyoutFeeNumber: buyoutFeeNumber,
           firstPaymentDate: firstPaymentDate,
           secondPaymentDate: secondPaymentDate,
+          buyoutAgreementDate: buyoutAgreementDate,
           equalInstall: equalInstall,
           equalInstallAmount: equalInstallAmount,
           equalInstallAmountText: equalInstallAmountText,

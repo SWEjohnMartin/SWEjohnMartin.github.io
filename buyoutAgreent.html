@@ -149,6 +149,14 @@
               required
             />
 
+            <label for="buyoutAgreementDate">Buyout Agreement Date:</label>
+            <input
+              type="date"
+              id="buyoutAgreementDate"
+              name="buyoutAgreementDate"
+              required
+            />
+
             <br />
             <div class="align-right button-position">
               <button
@@ -212,6 +220,12 @@
 
         payableOnDate = dateFormatter(payableOnDate);
 
+        let buyoutAgreementDate = document.getElementById(
+          "buyoutAgreementDate"
+        ).value;
+
+        buyoutAgreementDate = dateFormatter(buyoutAgreementDate);
+
         buyoutFeeNumber = buyoutFeeNumber.toFixed(2);
 
         const AdditionalRecipientName = document.getElementById(
@@ -234,6 +248,7 @@
           buyoutFeeText: buyoutFeeText,
           buyoutFeeNumber: buyoutFeeNumber,
           payableOnDate: payableOnDate,
+          buyoutAgreementDate: buyoutAgreementDate,
           AdditionalRecipientName: AdditionalRecipientName,
           AdditionalRecipientEmail: AdditionalRecipientEmail,
           cxEmail: cxEmail,
