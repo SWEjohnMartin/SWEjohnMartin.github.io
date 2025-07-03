@@ -354,9 +354,13 @@
           recipientName === "" ||
           recipientName === undefined ||
           email === "" ||
-          email === undefined
+          email === undefined ||
+          cxEmail === "" ||
+          cxEmail === undefined
         ) {
-          alert("Signer's name and email cannot be empty.");
+          alert(
+            "Signer's name and email or Team member email cannot be empty."
+          );
         } else {
           // Send data using Fetch API
           fetch(webhookUrl, {
