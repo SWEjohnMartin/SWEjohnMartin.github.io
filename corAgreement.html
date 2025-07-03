@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap5.3.1.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Generate GSU COR BOW Agreement</title>
+    <style>
+      body {
+        background-color: rgb(233, 233, 233);
+      }
+      label {
+        display: block;
+        margin: 10px 0 5px;
+      }
+      input[type="text"],
+      input[type="email"] {
+        width: 70%;
+        padding: 8px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      .top-bar {
+        padding: 20px 0 20px 0;
+        background-color: rgb(18, 18, 39);
+        margin-bottom: 40px;
+      }
+      .bottom-bar {
+        padding: 100px 0 100px 0;
+        background-color: rgb(24, 77, 137);
+      }
+      .align-right {
+        text-align: right;
+      }
+      .center {
+        margin: auto;
+      }
+      .button-position {
+        padding: 10px 100px 100px 0;
+      }
+      .btnHome {
+        background-color: DodgerBlue;
+        border: none;
+        color: white;
+        padding: 12px 16px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      /* Darker background on mouse-over */
+      .btnHome:hover {
+        background-color: RoyalBlue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 top-bar"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 center">
+          <h2>Generate GSU COR BOW Agreement</h2>
+          <div
+            class="home-button"
+            onclick="window.location.href='./buyoutAgreementsIndex.html';"
+          >
+            <button class="btnHome"><i class="fa fa-home"></i> Home</button>
+          </div>
+        </div>
+        <div class="col-md-7 center">
+          <form id="emailForm">
+            <hr />
+            <label for="cxEmail">Team Member's Email*:</label>
+            <input
+              type="email"
+              id="cxEmail"
+              name="cxEmail"
+              required
+              placeholder="Email to receive email confirmation of envelope creation"
+            />
+
+            <hr />
+
+            <label for="recipientName">Signer's Name*:</label>
+            <input
+              type="text"
+              id="recipientName"
+              name="recipientName"
+              required
+            />
+
+            <label for="email">Signer's Email*:</label>
+            <input type="email" id="email" name="email" required />
+
+            <hr />
+            <label for="AdditionalRecipientName"
+              >Additional Recipient's Name:</label
+            >
+            <input
+              type="text"
+              id="AdditionalRecipientName"
+              name="AdditionalRecipientName"
+              required
+            />
+
+            <label for="AdditionalRecipientEmail"
+              >Additional Recipient's Email:</label
+            >
+            <input
+              type="email"
+              id="AdditionalRecipientEmail"
+              name="AdditionalRecipientEmail"
+              required
+            />
+            <hr />
+
+            <br />
+
+            <label for="agreementCreationDate">Agreement Creation Date:</label>
+            <input
+              type="date"
+              id="agreementCreationDate"
+              name="agreementCreationDate"
+              required
+            />
+
+            <label for="lawFirm">Law Firm Name:</label>
+            <input type="text" id="lawFirm" name="lawFirm" required />
+
+            <label for="lawStateType">Law State of Information + Type:</label>
+            <input type="text" id="lawStateType" name="lawStateType" required />
+
+            <label for="businessAddress">Business Address:</label>
+            <input
+              type="text"
+              id="businessAddress"
+              name="businessAddress"
+              required
+            />
+
+            <label for="agreementEffectiveDate"
+              >Agreement Effective Date:</label
+            >
+            <input
+              type="date"
+              id="agreementEffectiveDate"
+              name="agreementEffectiveDate"
+              required
+            />
+
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" required />
+
+            <label for="numberIC">Number of IC of Record:</label>
+            <input type="text" id="numberIC" name="numberIC" required />
+
+            <!-- <label for="monthlyFee">Monthly Fee:</label>
+            <input type="text" id="monthlyFee" name="monthlyFee" required /> -->
+
+            <label for="MonthlyFeeContractorPay"
+              >Monthly Fee Contractor Pay:</label
+            >
+            <input
+              type="text"
+              id="MonthlyFeeContractorPay"
+              name="MonthlyFeeContractorPay"
+              required
+            />
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Yes"
+                id="month13"
+                required
+              />
+              <label class="form-check-label" for="month13">
+                13th Month?
+              </label>
+            </div>
+            <br />
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Yes"
+                id="holidayPay"
+                required
+              />
+              <label class="form-check-label" for="holidayPay">
+                Holiday Pay?
+              </label>
+            </div>
+            <br />
+
+            <label for="contractorName">Contractor Name:</label>
+            <input
+              type="text"
+              id="contractorName"
+              name="contractorName"
+              required
+            />
+            <div style="width: 400px">
+              <label class="form-check-label" for="position"> Position: </label>
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                id="position"
+              >
+                <option selected>Select a Position</option>
+                <option value="Intake Specialist">Intake Specialist</option>
+                <option value="Client Happiness Coordinator">
+                  Client Happiness Coordinator
+                </option>
+                <option value="Receptionist">Receptionist</option>
+                <option value="Case Manager">Case Manager</option>
+                <option value="Legal Assistant">Legal Assistant</option>
+                <option value="Executive Assistant">Executive Assistant</option>
+                <option value="Marketing Assistant">Marketing Assistant</option>
+                <option value="Billing Assistant">Billing Assistant</option>
+              </select>
+            </div>
+
+            <br />
+            <div class="align-right button-position">
+              <button
+                class="btn btn-primary"
+                type="button"
+                onclick="sendData()"
+              >
+                Generate Agreement
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 bottom-bar"></div>
+      </div>
+    </div>
+
+    <script>
+      const months = [
+        "Place Holder",
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      function dateFormatter(dateValue) {
+        dateValue = dateValue.toString();
+        let originalDateValueArray = dateValue.split("-");
+
+        let newDateValueText = `${originalDateValueArray[2]} ${
+          months[Number(originalDateValueArray[1])]
+        } ${originalDateValueArray[0]}`;
+
+        return newDateValueText;
+      }
+
+      function sendData() {
+        // Get the form data
+        const cxEmail = document.getElementById("cxEmail").value;
+        const recipientName = document.getElementById("recipientName").value;
+        const email = document.getElementById("email").value;
+
+        let agreementCreationDate = document.getElementById(
+          "agreementCreationDate"
+        ).value;
+        agreementCreationDate = dateFormatter(agreementCreationDate);
+
+        const lawFirm = document.getElementById("lawFirm").value;
+
+        const lawStateType = document.getElementById("lawStateType").value;
+
+        const businessAddress =
+          document.getElementById("businessAddress").value;
+
+        let agreementEffectiveDate = document.getElementById(
+          "agreementEffectiveDate"
+        ).value;
+        agreementEffectiveDate = dateFormatter(agreementEffectiveDate);
+
+        const country = document.getElementById("country").value;
+
+        let numberIC = Number(document.getElementById("numberIC").value);
+
+        let MonthlyFeeContractorPay = Number(
+          document.getElementById("MonthlyFeeContractorPay").value
+        );
+
+        const month13 = document.getElementById("month13").checked;
+
+        const holidayPay = document.getElementById("holidayPay").checked;
+
+        const contractorName = document.getElementById("contractorName").value;
+
+        const position = document.getElementById("position").value;
+
+        const AdditionalRecipientName = document.getElementById(
+          "AdditionalRecipientName"
+        ).value;
+        const AdditionalRecipientEmail = document.getElementById(
+          "AdditionalRecipientEmail"
+        ).value;
+
+        // Webhook URL
+        const webhookUrl =
+          "https://hooks.zapier.com/hooks/catch/15033132/ubg6itz/"; // Replace with actual webhook URL
+
+        // Prepare data to send
+        const data = {
+          recipientName: recipientName,
+          email: email,
+          agreementCreationDate: agreementCreationDate,
+          lawFirm: lawFirm,
+          lawStateType: lawStateType,
+          businessAddress: businessAddress,
+          agreementEffectiveDate: agreementEffectiveDate,
+          AdditionalRecipientName: AdditionalRecipientName,
+          AdditionalRecipientEmail: AdditionalRecipientEmail,
+          country: country,
+          numberIC: numberIC,
+          MonthlyFeeContractorPay: MonthlyFeeContractorPay,
+          month13: month13,
+          holidayPay: holidayPay,
+          contractorName: contractorName,
+          position: position,
+          cxEmail: cxEmail,
+        };
+
+        if (
+          recipientName === "" ||
+          recipientName === undefined ||
+          email === "" ||
+          email === undefined
+        ) {
+          alert("Signer's name and email cannot be empty.");
+        } else {
+          // Send data using Fetch API
+          fetch(webhookUrl, {
+            method: "POST",
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              alert("Data sent successfully!");
+              location.replace("./buyoutAgreementsIndex.html");
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        }
+      }
+
+      function numberToText(numRaw) {
+        let numArray = numRaw.toFixed(2).split(".");
+        let num = Number(numArray[0]);
+
+        if (num < 0 || num > 50000) {
+          return "Number is out of range (should be between 0 and 50,000)";
+        }
+
+        const ones = [
+          "",
+          "one",
+          "two",
+          "three",
+          "four",
+          "five",
+          "six",
+          "seven",
+          "eight",
+          "nine",
+          "ten",
+          "eleven",
+          "twelve",
+          "thirteen",
+          "fourteen",
+          "fifteen",
+          "sixteen",
+          "seventeen",
+          "eighteen",
+          "nineteen",
+        ];
+
+        const tens = [
+          "",
+          "",
+          "twenty",
+          "thirty",
+          "forty",
+          "fifty",
+          "sixty",
+          "seventy",
+          "eighty",
+          "ninety",
+        ];
+
+        const thousands = ["", "thousand", "thousand"];
+
+        function convertHundreds(n) {
+          let result = "";
+
+          if (n >= 100) {
+            result += ones[Math.floor(n / 100)] + " hundred ";
+            n %= 100;
+          }
+
+          if (n >= 20) {
+            result += tens[Math.floor(n / 10)] + " ";
+            n %= 10;
+          }
+
+          if (n > 0) {
+            result += ones[n] + " ";
+          }
+
+          return result.trim();
+        }
+
+        function convertToText(n) {
+          if (n === 0) return "zero";
+
+          let result = "";
+          let thousandIndex = 0;
+
+          while (n > 0) {
+            let hundreds = n % 1000;
+            if (hundreds > 0) {
+              result =
+                convertHundreds(hundreds) +
+                " " +
+                thousands[thousandIndex] +
+                " " +
+                result;
+            }
+            n = Math.floor(n / 1000);
+            thousandIndex++;
+          }
+
+          return result.trim() + " & " + numArray[1] + "/100";
+        }
+
+        return convertToText(num);
+      }
+    </script>
+  </body>
+</html>
