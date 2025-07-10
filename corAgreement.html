@@ -356,10 +356,14 @@
           email === "" ||
           email === undefined ||
           cxEmail === "" ||
-          cxEmail === undefined
+          cxEmail === undefined ||
+          MonthlyFeeContractorPay === "" ||
+          MonthlyFeeContractorPay === undefined ||
+          numberIC === "" ||
+          numberIC === undefined
         ) {
           alert(
-            "Signer's name and email or Team member email cannot be empty."
+            "The following values cannot be empty: Signer's name and emamil, CX email, monthly fee, and number of IC"
           );
         } else {
           // Send data using Fetch API
