@@ -151,13 +151,13 @@
               required
             />
 
-            <label for="durationTime">Effective Duration Time (Years):</label>
+            <!-- <label for="durationTime">Effective Duration Time (Years):</label>
             <input
               type="number"
               id="durationTime"
               name="durationTime"
               required
-            />
+            /> -->
 
             <label for="firstPaymentDate">First Payment Date:</label>
             <input
@@ -238,7 +238,7 @@
         const email = document.getElementById("email").value;
         const template = document.getElementById("templateId").value;
         const stafferName = document.getElementById("stafferName").value;
-        const durationTime = document.getElementById("durationTime").value;
+        //const durationTime = document.getElementById("durationTime").value;
 
         let buyoutFeeNumber = Number(
           document.getElementById("buyoutFeeNumber").value
@@ -295,7 +295,7 @@
           AdditionalRecipientName: AdditionalRecipientName,
           AdditionalRecipientEmail: AdditionalRecipientEmail,
           cxEmail: cxEmail,
-          durationTime: durationTime,
+          //durationTime: durationTime,
         };
 
         if (
