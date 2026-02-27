@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -70,7 +70,7 @@
           <h2>Generate GSU Buyout Agreement</h2>
           <div
             class="home-button"
-            onclick="window.location.href='./buyoutAgreementsIndex.html';"
+            onclick="window.location.href = './buyoutAgreementsIndex.html'"
           >
             <button class="btnHome"><i class="fa fa-home"></i> Home</button>
           </div>
@@ -132,6 +132,9 @@
 
             <label for="stafferName">Staffer's Name:</label>
             <input type="text" id="stafferName" name="stafferName" required />
+
+            <label for="positionName">Job Position:</label>
+            <input type="text" id="positionName" name="positionName" required />
 
             <label for="buyoutFeeNumber">Buyout Fee (Number):</label>
             <input
@@ -221,9 +224,10 @@
         const template = document.getElementById("templateId").value;
         const stafferName = document.getElementById("stafferName").value;
         //const durationTime = document.getElementById("durationTime").value;
+        const positionName = document.getElementById("positionName").value;
 
         let buyoutFeeNumber = Number(
-          document.getElementById("buyoutFeeNumber").value
+          document.getElementById("buyoutFeeNumber").value,
         );
         const buyoutFeeText = numberToText(buyoutFeeNumber);
         let payableOnDate = document.getElementById("payableOnDate").value;
@@ -231,7 +235,7 @@
         payableOnDate = dateFormatter(payableOnDate);
 
         let buyoutAgreementDate = document.getElementById(
-          "buyoutAgreementDate"
+          "buyoutAgreementDate",
         ).value;
 
         buyoutAgreementDate = dateFormatter(buyoutAgreementDate);
@@ -239,10 +243,10 @@
         buyoutFeeNumber = buyoutFeeNumber.toFixed(2);
 
         const AdditionalRecipientName = document.getElementById(
-          "AdditionalRecipientName"
+          "AdditionalRecipientName",
         ).value;
         const AdditionalRecipientEmail = document.getElementById(
-          "AdditionalRecipientEmail"
+          "AdditionalRecipientEmail",
         ).value;
 
         // Webhook URL
@@ -262,6 +266,7 @@
           AdditionalRecipientName: AdditionalRecipientName,
           AdditionalRecipientEmail: AdditionalRecipientEmail,
           cxEmail: cxEmail,
+          positionName: positionName,
           //durationTime: durationTime,
         };
 
@@ -274,7 +279,7 @@
           cxEmail === undefined
         ) {
           alert(
-            "Signer's name and email or Team member email cannot be empty."
+            "Signer's name and email or Team member email cannot be empty.",
           );
         } else {
           // Send data using Fetch API

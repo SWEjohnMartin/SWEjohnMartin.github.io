@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -70,7 +70,7 @@
           <h2>Generate GSU Buyout Agreement (Installments)</h2>
           <div
             class="home-button"
-            onclick="window.location.href='./buyoutAgreementsIndex.html';"
+            onclick="window.location.href = './buyoutAgreementsIndex.html'"
           >
             <button class="btnHome"><i class="fa fa-home"></i> Home</button>
           </div>
@@ -134,6 +134,9 @@
 
             <label for="stafferName">Staffer's Name:</label>
             <input type="text" id="stafferName" name="stafferName" required />
+
+            <label for="positionName">Job Position:</label>
+            <input type="text" id="positionName" name="positionName" required />
 
             <label for="buyoutFeeNumber">One Time Buyout Fee (Number):</label>
             <input
@@ -239,24 +242,25 @@
         const template = document.getElementById("templateId").value;
         const stafferName = document.getElementById("stafferName").value;
         //const durationTime = document.getElementById("durationTime").value;
+        const positionName = document.getElementById("positionName").value;
 
         let buyoutFeeNumber = Number(
-          document.getElementById("buyoutFeeNumber").value
+          document.getElementById("buyoutFeeNumber").value,
         );
         const firstPaymentDate = dateFormatter(
-          document.getElementById("firstPaymentDate").value
+          document.getElementById("firstPaymentDate").value,
         );
 
         const secondPaymentDate = dateFormatter(
-          document.getElementById("secondPaymentDate").value
+          document.getElementById("secondPaymentDate").value,
         );
 
         const buyoutAgreementDate = dateFormatter(
-          document.getElementById("buyoutAgreementDate").value
+          document.getElementById("buyoutAgreementDate").value,
         );
 
         const equalInstall = Number(
-          document.getElementById("equalInstall").value
+          document.getElementById("equalInstall").value,
         );
 
         let buyoutFeeText = numberToText(buyoutFeeNumber);
@@ -268,10 +272,10 @@
         buyoutFeeNumber = buyoutFeeNumber.toFixed(2);
 
         const AdditionalRecipientName = document.getElementById(
-          "AdditionalRecipientName"
+          "AdditionalRecipientName",
         ).value;
         const AdditionalRecipientEmail = document.getElementById(
-          "AdditionalRecipientEmail"
+          "AdditionalRecipientEmail",
         ).value;
 
         // Webhook URL
@@ -295,6 +299,7 @@
           AdditionalRecipientName: AdditionalRecipientName,
           AdditionalRecipientEmail: AdditionalRecipientEmail,
           cxEmail: cxEmail,
+          positionName: positionName,
           //durationTime: durationTime,
         };
 
@@ -307,7 +312,7 @@
           cxEmail === undefined
         ) {
           alert(
-            "Signer's name and email or Team member email cannot be empty."
+            "Signer's name and email or Team member email cannot be empty.",
           );
         } else {
           // Send data using Fetch API
